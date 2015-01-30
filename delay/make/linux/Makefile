@@ -1,6 +1,7 @@
 CC=clang
-LIBS=-L../../lib -lportaudio
-FRAMEWORKS=-framework CoreAudio -framework CoreFoundation  -framework AudioUnit -framework AudioToolbox -framework CoreServices
+LIBS=-L../../lib/osx -lportaudio
+# if running on mac os x you must link these frameworks
+#FRAMEWORKS=-framework CoreAudio -framework CoreFoundation  -framework AudioUnit -framework AudioToolbox -framework CoreServices
 INCLUDES=-I../../include
 SRCDIR=../../src
 SOURCES=$(SRCDIR)/ringbuffer.c
