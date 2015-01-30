@@ -1,6 +1,6 @@
 CC=clang
 LIBS=-L../../lib -lportaudio
-FRAMEWORKS=-L../../lib -lportaudio -framework CoreAudio -framework CoreFoundation  -framework AudioUnit -framework AudioToolbox -framework CoreServices
+FRAMEWORKS=-framework CoreAudio -framework CoreFoundation  -framework AudioUnit -framework AudioToolbox -framework CoreServices
 INCLUDES=-I../../include
 SRCDIR=../../src
 SOURCES=$(SRCDIR)/ringbuffer.c
