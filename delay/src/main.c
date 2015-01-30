@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Matthew Hosack. All rights reserved.
 //
 #include "portaudio.h"
-#include "ringbuffer.h"
+#include "Delay.h"
 
 #define NUM_SECONDS     (3)
 #define SAMPLE_RATE     (44100)
 
-ringbuffer_s rbuf;
+delay_s delay;
 
 static int callback(const void *input
                     ,void *output
@@ -20,25 +20,13 @@ static int callback(const void *input
                     ,PaStreamCallbackFlags statusFlags
                     ,void *userData)
 {
-    int i;
+    unsigned long i;
     float temp[4];
     float *in = (float*)input;
     float *out = (float*)output;
-    ringbuffer_s *p_rbuf = (ringbuffer_s*)userData;
+	delay_s *d = (delay_s*)userData;
 
-    for(i = 0; i < frameCount; ++i)
-    {
-        temp[0] = *in++;
-        temp[1] = *in++;
-        ringbuffer_put(p_rbuf, temp[0]);
-        ringbuffer_put(p_rbuf, temp[1]);
-        
-        ringbuffer_get(p_rbuf, &temp[2]);
-        ringbuffer_get(p_rbuf, &temp[3]);
-        
-        *out++ = temp[0] * 0.5 + temp[2] * 0.5;
-        *out++ = temp[1] * 0.5 + temp[3] * 0.5;
-    }
+	delay_process(d, in, out, frameCount);
 
     return 0;
 }
@@ -47,11 +35,9 @@ int main(int argc, const char * argv[])
 {
     PaStream* stream;
 	PaError err;
-    ringbuffer_s *p_rbuf;
-    
-    p_rbuf = &rbuf;
-    ringbuffer_init(p_rbuf);
-    ringbuffer_setdelay(p_rbuf, 300);
+	delay_s *d;
+
+	d = &delay;
     
 	err = Pa_Initialize();
 	if (err != paNoError){
@@ -65,7 +51,8 @@ int main(int argc, const char * argv[])
                                ,SAMPLE_RATE
                                ,256
                                ,callback
-                               ,p_rbuf);
+							   ,d);
+
 	if (err != paNoError){
 		return -1;
 	}
@@ -76,7 +63,8 @@ int main(int argc, const char * argv[])
 	}
     
     //RUN FOREVER
-	for(;;);
+	//for(;;);
+	Pa_Sleep(NUM_SECONDS * 1000);
     
 	err = Pa_CloseStream(stream);
 	if (err != paNoError){
