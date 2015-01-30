@@ -9,6 +9,7 @@ BINDIR=../../bin/linux
 EXECUTABLE=$(BINDIR)/delay_main.out
 
 $(EXECUTABLE): $(SRCDIR)/main.c $(OBJECTS)
+	@mkdir -p $(BINDIR)
 	@echo "Compiling executable"
 	$(CC) $(LIBS) $(FRAMEWORKS) $(INCLUDES) -o $@ $^
 
