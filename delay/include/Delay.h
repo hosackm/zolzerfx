@@ -1,8 +1,20 @@
+/**
+*   Delay.h
+*   Matt Hosack
+*
+*   The delay effect is implemented by using a ringbuffer
+*   and separating the read location from the write location
+*   by a certain amount.  The read location will be scaled 
+*   and summed with the current input sample.
+*
+*   Different delay times will result in different sounds
+*       Slapback effect : ~25 ms
+*       Echo effect : ~50 ms
+**/
 #ifndef DELAY_EFFECT_H_
 #define DELAY_EFFECT_H_
 
 #include "ringbuffer.h"
-
 #include <pthread.h>
 
 #ifdef __cplusplus
