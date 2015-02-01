@@ -39,7 +39,7 @@ int main(int argc, const char * argv[])
 
 	d = &delay;
 	delay_setAmount(d, 1.0f);
-    delay_setDelay_ms(d, 1000);
+    delay_setDelay_ms(d, 25);
     
 	err = Pa_Initialize();
 	if (err != paNoError){

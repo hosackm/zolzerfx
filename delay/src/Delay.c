@@ -9,11 +9,17 @@ void delay_init(delay_s *_this)
 
 void delay_setDelay_ms(delay_s *_this, unsigned int ms)
 {
+    pthread_mutex_lock(&_this->mutex);
+
 	ringbuffer_setdelay(&_this->buffer, ms);
+
+    pthread_mutex_unlock(&_this->mutex);
 }
 
 void delay_setAmount(delay_s *_this, float amount)
 {
+    pthread_mutex_lock(&_this->mutex);
+
 	if(amount < 0.0f)
 	{
 		amount = 0.0f;
@@ -24,6 +30,8 @@ void delay_setAmount(delay_s *_this, float amount)
 	}
 
 	_this->amount = amount;
+
+    pthread_mutex_unlock(&_this->mutex);
 }
 
 void delay_process(	delay_s *_this
@@ -35,6 +43,8 @@ void delay_process(	delay_s *_this
 	int i;
 	float temp[4];
     float wet, dry;
+
+    pthread_mutex_lock(&_this->mutex);
 
     /* amount = 100% should correspond to 0.5 : 0.5 wet/dry */
     wet = _this->amount / 2;
@@ -54,4 +64,6 @@ void delay_process(	delay_s *_this
         *output++ = temp[0] * dry + temp[2] * wet;
         *output++ = temp[1] * dry + temp[3] * wet;
 	}
+
+    pthread_mutex_unlock(&_this->mutex);
 }

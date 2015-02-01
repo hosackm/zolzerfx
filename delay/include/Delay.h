@@ -3,6 +3,8 @@
 
 #include "ringbuffer.h"
 
+#include <pthread.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -11,6 +13,7 @@ typedef struct
 {
 	ringbuffer_s	buffer;
 	float			amount;
+    pthread_mutex_t mutex;
 }delay_s;
 
 void delay_init(delay_s *_this);
