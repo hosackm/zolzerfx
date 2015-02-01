@@ -1,8 +1,8 @@
 CC=clang
-LIBS=-L../../lib/osx -lportaudio
+LIBS=-L../../../portaudio/lib/osx_x86 -lportaudio
 # if running on mac os x you must link these frameworks
 FRAMEWORKS=-framework CoreAudio -framework CoreFoundation  -framework AudioUnit -framework AudioToolbox -framework CoreServices
-INCLUDES=-I../../include
+INCLUDES=-I../../include -I../../../portaudio/include
 SRCDIR=../../src
 BINDIR=../../bin/linux
 EXECUTABLE=$(BINDIR)/delay_main.out
