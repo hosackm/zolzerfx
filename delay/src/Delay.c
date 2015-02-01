@@ -34,6 +34,11 @@ void delay_process(	delay_s *_this
 {
 	int i;
 	float temp[4];
+    float wet, dry;
+
+    /* amount = 100% should correspond to 0.5 : 0.5 wet/dry */
+    wet = _this->amount / 2;
+    dry = 1.0f - wet;
 
 	for(i = 0; i < frameCount; ++i)
 	{
@@ -46,7 +51,7 @@ void delay_process(	delay_s *_this
         ringbuffer_get(&_this->buffer, &temp[2]);
         ringbuffer_get(&_this->buffer, &temp[3]);
         
-        *output++ = temp[0] * 0.5 + temp[2] * 0.5;
-        *output++ = temp[1] * 0.5 + temp[3] * 0.5;
+        *output++ = temp[0] * dry + temp[2] * wet;
+        *output++ = temp[1] * dry + temp[3] * wet;
 	}
 }

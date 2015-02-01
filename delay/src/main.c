@@ -38,7 +38,8 @@ int main(int argc, const char * argv[])
 	delay_s *d;
 
 	d = &delay;
-	delay_setAmount(d, 0.5f);
+	delay_setAmount(d, 1.0f);
+    delay_setDelay_ms(d, 1000);
     
 	err = Pa_Initialize();
 	if (err != paNoError){
@@ -64,8 +65,8 @@ int main(int argc, const char * argv[])
 	}
     
     //RUN FOREVER
-	//for(;;);
-	Pa_Sleep(NUM_SECONDS * 1000);
+	for(;;);
+	//Pa_Sleep(NUM_SECONDS * 1000);
     
 	err = Pa_CloseStream(stream);
 	if (err != paNoError){
