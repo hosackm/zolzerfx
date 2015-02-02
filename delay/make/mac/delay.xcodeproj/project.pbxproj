@@ -10,6 +10,12 @@
 		BA6A41201A7B6C69001A1988 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BA6A411E1A7B6C69001A1988 /* main.c */; };
 		BA6A41211A7B6C69001A1988 /* ringbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = BA6A411F1A7B6C69001A1988 /* ringbuffer.c */; };
 		BA6A41271A7B6F29001A1988 /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6A41261A7B6F29001A1988 /* libportaudio.a */; };
+		BA8387341A7F3C18000CD40D /* Delay.c in Sources */ = {isa = PBXBuildFile; fileRef = BA8387331A7F3C18000CD40D /* Delay.c */; };
+		BA83873A1A7F3C46000CD40D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8387351A7F3C46000CD40D /* AudioToolbox.framework */; };
+		BA83873B1A7F3C46000CD40D /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8387361A7F3C46000CD40D /* AudioUnit.framework */; };
+		BA83873C1A7F3C46000CD40D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8387371A7F3C46000CD40D /* CoreAudio.framework */; };
+		BA83873D1A7F3C46000CD40D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8387381A7F3C46000CD40D /* CoreFoundation.framework */; };
+		BA83873E1A7F3C46000CD40D /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8387391A7F3C46000CD40D /* CoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +35,12 @@
 		BA6A411E1A7B6C69001A1988 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../../../src/main.c; sourceTree = "<group>"; };
 		BA6A411F1A7B6C69001A1988 /* ringbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ringbuffer.c; path = ../../../src/ringbuffer.c; sourceTree = "<group>"; };
 		BA6A41261A7B6F29001A1988 /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = ../../lib/libportaudio.a; sourceTree = "<group>"; };
+		BA8387331A7F3C18000CD40D /* Delay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Delay.c; path = ../../../src/Delay.c; sourceTree = "<group>"; };
+		BA8387351A7F3C46000CD40D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BA8387361A7F3C46000CD40D /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		BA8387371A7F3C46000CD40D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		BA8387381A7F3C46000CD40D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		BA8387391A7F3C46000CD40D /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +48,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA83873A1A7F3C46000CD40D /* AudioToolbox.framework in Frameworks */,
+				BA83873B1A7F3C46000CD40D /* AudioUnit.framework in Frameworks */,
+				BA83873C1A7F3C46000CD40D /* CoreAudio.framework in Frameworks */,
+				BA83873D1A7F3C46000CD40D /* CoreFoundation.framework in Frameworks */,
+				BA83873E1A7F3C46000CD40D /* CoreServices.framework in Frameworks */,
 				BA6A41271A7B6F29001A1988 /* libportaudio.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +80,7 @@
 		BA6A41141A7B6BAC001A1988 /* delay */ = {
 			isa = PBXGroup;
 			children = (
+				BA8387331A7F3C18000CD40D /* Delay.c */,
 				BA6A411E1A7B6C69001A1988 /* main.c */,
 				BA6A411F1A7B6C69001A1988 /* ringbuffer.c */,
 			);
@@ -72,6 +90,11 @@
 		BA6A41251A7B6EFA001A1988 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				BA8387351A7F3C46000CD40D /* AudioToolbox.framework */,
+				BA8387361A7F3C46000CD40D /* AudioUnit.framework */,
+				BA8387371A7F3C46000CD40D /* CoreAudio.framework */,
+				BA8387381A7F3C46000CD40D /* CoreFoundation.framework */,
+				BA8387391A7F3C46000CD40D /* CoreServices.framework */,
 				BA6A41261A7B6F29001A1988 /* libportaudio.a */,
 			);
 			name = lib;
@@ -128,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA8387341A7F3C18000CD40D /* Delay.c in Sources */,
 				BA6A41201A7B6C69001A1988 /* main.c in Sources */,
 				BA6A41211A7B6C69001A1988 /* ringbuffer.c in Sources */,
 			);
@@ -210,12 +234,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
+					../../../portaudio/lib/osx_x86,
 					"$(inherited)",
-					/opt/local/lib,
-					/Users/hosack/Documents/Programming/c/ZolzerFX/zolzerfx/delay/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = ../../include;
+				USER_HEADER_SEARCH_PATHS = "../../../portaudio/include ../../include";
 			};
 			name = Debug;
 		};
@@ -223,12 +246,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
+					../../../portaudio/lib/osx_x86,
 					"$(inherited)",
-					/opt/local/lib,
-					/Users/hosack/Documents/Programming/c/ZolzerFX/zolzerfx/delay/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = ../../include;
+				USER_HEADER_SEARCH_PATHS = "../../../portaudio/include ../../include";
 			};
 			name = Release;
 		};
